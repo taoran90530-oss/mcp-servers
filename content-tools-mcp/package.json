@@ -1,0 +1,16 @@
+{
+  "name": "@mcpmarket/content-tools-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for content generation, SEO analysis, and text transformation - content marketing power tools for Claude",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "content-tools-mcp": "./index.js"
+  },
+  "keywords": ["mcp", "content", "seo", "text-analysis", "marketing"],
+  "author": "AI Tools Marketplace",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  }
+}
