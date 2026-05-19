@@ -1,0 +1,20 @@
+{
+  "name": "@mcpmarket/data-analysis-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for analyzing CSV, JSON, and structured data - business intelligence for Claude",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "data-analysis-mcp": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "keywords": ["mcp", "data-analysis", "csv", "json", "business-intelligence"],
+  "author": "AI Tools Marketplace",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  }
+}
