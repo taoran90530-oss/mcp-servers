@@ -1,0 +1,27 @@
+{
+  "name": "@mcpmarket/web-tools-server",
+  "version": "1.0.0",
+  "description": "MCP server for web research, scraping, and data extraction - gives Claude web superpowers",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "web-tools-mcp": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "keywords": ["mcp", "model-context-protocol", "web-scraping", "ai-tools", "claude"],
+  "author": "AI Tools Marketplace",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mcpmarket/web-tools-mcp"
+  }
+}
