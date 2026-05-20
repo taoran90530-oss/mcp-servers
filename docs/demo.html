@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI智能客服演示</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,sans-serif;background:#f5f5f5;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+.phone{width:380px;height:700px;background:#fff;border-radius:30px;box-shadow:0 20px 60px rgba(0,0,0,0.15);overflow:hidden;display:flex;flex-direction:column}
+.header{background:#07c160;color:#fff;padding:16px 20px;text-align:center;font-size:14px}
+.header .name{font-size:17px;font-weight:600}
+.header .sub{font-size:12px;opacity:0.9;margin-top:4px}
+.chat{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.msg{max-width:80%;padding:10px 14px;border-radius:8px;font-size:14px;line-height:1.5}
+.msg.bot{background:#f0f0f0;color:#333;align-self:flex-start;border-bottom-left-radius:2px}
+.msg.user{background:#07c160;color:#fff;align-self:flex-end;border-bottom-right-radius:2px}
+.input-bar{display:flex;padding:12px;border-top:1px solid #e5e5e5;gap:8px}
+.input-bar input{flex:1;border:1px solid #e5e5e5;border-radius:20px;padding:10px 16px;font-size:14px;outline:none}
+.input-bar button{background:#07c160;color:#fff;border:none;border-radius:20px;padding:10px 20px;font-size:14px}
+.badge{background:#fff3cd;color:#856404;padding:8px 12px;margin:8px 16px;border-radius:8px;font-size:11px;text-align:center}
+</style>
+</head>
+<body>
+<div class="phone">
+<div class="header">
+<div class="name">某餐饮店AI客服</div>
+<div class="sub">自动回复 · 24小时在线</div>
+</div>
+<div class="badge">演示模式 - 以下是客户真实会问的问题</div>
+<div class="chat" id="chat">
+<div class="msg bot">您好！欢迎光临本店，有什么可以帮您的？</div>
+</div>
+<div class="input-bar">
+<input type="text" id="input" placeholder="输入顾客常见问题...">
+<button onclick="send()">发送</button>
+</div>
+</div>
+
+<script>
+const replies = {
+  '营业时间': '我们每天早上10点到晚上10点营业，周末和节假日正常营业哦 ',
+  '菜单': '您可以关注我们的公众号查看完整菜单，热销推荐：招牌牛肉面(38元)、酸菜鱼(58元)、口水鸡(28元)',
+  '外卖': '我们支持美团和饿了么外卖配送，满50元包邮，预计30-45分钟送达',
+  '位置': '我们在朝阳区建国路88号，地铁1号线大望路站B口出来步行3分钟就到',
+  '停车': '店门口有免费停车位，大概能停20辆车',
+  '订座': '可以预订！您想订什么时间、几个人？我帮您登记',
+  '优惠': '最近有新客8折优惠，会员充值300送50，每周三还有特价菜',
+  '排队': '目前等位大约15-20分钟，您可以提前扫码取号',
+  'wifi': 'WiFi名：Restaurant-Free，密码：88888888',
+  '开发票': '可以的！消费满200元可开发票，结账时跟服务员说一下就行',
+  '电话': '我们的电话是010-88886666，也可以直接在这里问我',
+  '招聘': '我们目前在招服务员和后厨，月薪5000-8000，包吃住，可以来店里详谈'
+}
+
+function send(){
+  const input = document.getElementById('input');
+  const q = input.value.trim();
+  if(!q) return;
+
+  const chat = document.getElementById('chat');
+  chat.innerHTML += '<div class="msg user">'+q+'</div>';
+
+  let reply = '这个问题我不太确定，我让老板来回复您可以吗？'
+  for(const [k,v] of Object.entries(replies)){
+    if(q.includes(k)){ reply = v; break }
+  }
+
+  setTimeout(()=>{
+    chat.innerHTML += '<div class="msg bot">'+reply+'</div>';
+    chat.scrollTop = chat.scrollHeight;
+  }, 500);
+
+  input.value = '';
+  chat.scrollTop = chat.scrollHeight;
+}
+</script>
+</body>
+</html>
